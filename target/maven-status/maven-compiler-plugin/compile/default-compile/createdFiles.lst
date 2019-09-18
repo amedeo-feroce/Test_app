@@ -1,6 +1,11 @@
-com\acn\nemo\service\impl\LoginServiceImpl.class
 com\acn\nemo\dto\LoginDtoInput.class
-com\acn\nemo\service\LoginService.class
+com\acn\nemo\model\Utente.class
+com\acn\nemo\controller\LogoutController.class
 com\acn\nemo\utils\DBConnectionUtils.class
+com\acn\nemo\controller\RegisterController.class
 com\acn\nemo\controller\LoginController.class
 com\acn\nemo\dao\LoginDao.class
+com\acn\nemo\service\impl\LoginServiceImpl.class
+com\acn\nemo\service\LoginService.class
+com\acn\nemo\model\Utente_.class
+com\acn\nemo\dto\LoginDtoOutput.class

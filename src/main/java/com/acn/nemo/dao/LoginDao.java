@@ -13,10 +13,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -35,9 +37,17 @@ public class LoginDao {
 
     public boolean checkUsers(String username) {
         boolean trovato = false;
-        String query = "select * from users where username=?";
+        String query = "select * from utente where username=?";
         try {
             try {
+                
+                EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpaDerbyTest");
+                EntityManager em = emf.createEntityManager();
+
+                EntityTransaction transaction = em.getTransaction();
+
+                transaction.begin();
+    
                 connection = DBConnectionUtils.getdBConnectionUtils().getConnection();
                 pstm = connection.prepareStatement(query);
                 pstm.setString(1, username);
@@ -72,7 +82,7 @@ public class LoginDao {
 
     public boolean checkLogin(LoginDtoInput loginDtoInput) {
         boolean trovato = false;
-        String query = "select * from users where username=?";
+        String query = "select * from utente where username=?";
         try {
             try {
                 connection = DBConnectionUtils.getdBConnectionUtils().getConnection();
