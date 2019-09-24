@@ -18,11 +18,8 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+
 
 /**
  *
@@ -32,13 +29,16 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "UTENTE", catalog = "", schema = "AMEDEO")
+@Table(name = "Utente")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Utente.findAll", query = "SELECT u FROM Utente u")
     , @NamedQuery(name = "Utente.findById", query = "SELECT u FROM Utente u WHERE u.id = :id")
     , @NamedQuery(name = "Utente.findByPassword", query = "SELECT u FROM Utente u WHERE u.password = :password")
-    , @NamedQuery(name = "Utente.findByUsername", query = "SELECT u FROM Utente u WHERE u.username = :username")})
+    , @NamedQuery(name = "Utente.findByUsername", query = "SELECT u FROM Utente u WHERE u.username = :username")
+    
+
+    })
 public class Utente implements Serializable {
 
     private static final long serialVersionUID = 1L;

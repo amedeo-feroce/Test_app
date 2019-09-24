@@ -23,15 +23,6 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public boolean checkUsers(String username) {
-
-         loginDao = new LoginDao();
-        loginDtoOutput = loginDao.checkUsers(username);
-
-        return loginDtoOutput;
-    }
-
-    @Override
     public boolean checkLogin(LoginDtoInput loginDtoInput) {
 
          loginDao = new LoginDao();

@@ -10,7 +10,7 @@
     </head>
     <body>
         <center><h2>Home Page</h2></center>
-        Welcome <%=request.getAttribute("username") %> 
+         
         <div id=center>
             <h3>Welcome <%=loginDto.getUsername()%></h3>
             

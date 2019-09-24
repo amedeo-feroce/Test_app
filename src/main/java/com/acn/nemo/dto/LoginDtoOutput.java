@@ -6,6 +6,7 @@
 package com.acn.nemo.dto;
 
 import java.util.Objects;
+import javax.persistence.EntityManager;
 
 /**
  *
@@ -15,10 +16,25 @@ public class LoginDtoOutput {
 
     private String username;
     private String password;
+    private boolean trovato;
+    
 
     public LoginDtoOutput() {
     }
 
+    public LoginDtoOutput(EntityManager em) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public boolean isTrovato() {
+        return trovato;
+    }
+
+    public void setTrovato(boolean trovato) {
+        this.trovato = trovato;
+    }
+
+    
     public void setUsername(String username) {
         this.username = username;
     }
@@ -38,8 +54,6 @@ public class LoginDtoOutput {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 59 * hash + Objects.hashCode(this.username);
-        hash = 59 * hash + Objects.hashCode(this.password);
         return hash;
     }
 
@@ -55,6 +69,9 @@ public class LoginDtoOutput {
             return false;
         }
         final LoginDtoOutput other = (LoginDtoOutput) obj;
+        if (this.trovato != other.trovato) {
+            return false;
+        }
         if (!Objects.equals(this.username, other.username)) {
             return false;
         }
@@ -66,8 +83,9 @@ public class LoginDtoOutput {
 
     @Override
     public String toString() {
-        return "LoginDtoOutput{" + "username=" + username + ", password=" + password + '}';
+        return "LoginDtoOutput{" + "username=" + username + ", password=" + password + ", trovato=" + trovato + '}';
     }
+
     
     
 

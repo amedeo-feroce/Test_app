@@ -53,24 +53,25 @@ public class LoginController extends HttpServlet {
                 loginDtoInput.setUsername(request.getParameter("username"));
                 loginDtoInput.setPassword(request.getParameter("password"));
 
-                if (loginService.checkUsers(username)) {
-                    if (loginService.checkLogin(loginDtoInput)) {
-                        session.setAttribute("user", loginDtoInput);
-                        this.getServletContext().getRequestDispatcher("/userMenu.jsp").forward(request, response);
-                    }
-                } else {
-
-                    this.getServletContext().getRequestDispatcher("/errorPage.jsp").forward(request, response);
-
+                if (loginService.checkLogin(loginDtoInput)){
+                    session.setAttribute("user", loginDtoInput);
+                    this.getServletContext().getRequestDispatcher("/userMenu.jsp").forward(request, response);
                 }
             } else {
+
+                this.getServletContext().getRequestDispatcher("/errorPage.jsp").forward(request, response);
+
+            }
+            /*else {
                 System.out.println("Sorry username or password error");
                 logger.info("null value!");
                 response.sendRedirect("login.jsp");
-            }
+            }*/
 
         } catch (Exception ex) {
+            ex.printStackTrace();
             logger.error("Errore: " + ex.getMessage());
+
         }
 
         out.close();

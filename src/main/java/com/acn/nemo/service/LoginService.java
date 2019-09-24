@@ -13,7 +13,6 @@ import com.acn.nemo.dto.LoginDtoInput;
  */
 public interface LoginService {
 
-    public boolean checkUsers(String username);
     public boolean checkLogin(LoginDtoInput loginDtoInput);
 
 }

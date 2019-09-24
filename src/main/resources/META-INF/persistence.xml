@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="jpaDerbyTest" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="C3BO_MW" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>com.acn.nemo.model.Utente</class>
+    <class>com.acn.nemo.model.Login</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/loginPage"/>
-      <property name="javax.persistence.jdbc.user" value="amedeo"/>
-      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-      <property name="javax.persistence.jdbc.password" value="admin"/>
-      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@//10.0.0.7:1521/sic30dev"/>
+      <property name="javax.persistence.jdbc.user" value="c3bo_mw"/>
+      <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+      <property name="javax.persistence.jdbc.password" value="c3bo_mw"/>
     </properties>
   </persistence-unit>
 </persistence>
