@@ -20,6 +20,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import org.apache.log4j.Logger;
 
+
 /**
  *
  * @author l
@@ -44,12 +45,9 @@ public class LoginDao {
     public LoginDtoOutput checkLogin(LoginDtoInput loginDtoInput) {
 
         transaction.begin();
-
-        TypedQuery<Login> query = em.createNamedQuery("Login.findByUsernameAndPassword", Login.class);
-        query.setParameter("username", loginDtoInput.getUsername());
-        query.setParameter("password", loginDtoInput.getPassword());
-        List<Login> login = query.getResultList();
-
+        
+        List<Login> login = findUserExist(loginDtoInput);
+        
         em.close();
 
         for (Login log : login) {
@@ -67,12 +65,9 @@ public class LoginDao {
     public LoginDtoOutput insertLogin(LoginDtoInput loginDtoInput) {
         transaction.begin();
 
-        TypedQuery<Login> query1 = em.createNamedQuery("Login.findByUsernameAndPassword", Login.class);
-        query1.setParameter("username", loginDtoInput.getUsername());
-        query1.setParameter("password", loginDtoInput.getPassword());
-        List<Login> login1 = query1.getResultList();
+        List<Login> login = findUserExist(loginDtoInput);
 
-        if (login1.isEmpty()) {
+        if (login.isEmpty()) {
 
             Query query2 = em.createNativeQuery("INSERT INTO LOGIN l(l.USERNAME,l.PASSWORD) VALUES (?, ?)");
             query2.setParameter(1, loginDtoInput.getUsername());
@@ -94,7 +89,13 @@ public class LoginDao {
 
     }
 
-    private void findUserExist(LoginDtoInput loginDtoInput) {
+    private List<Login> findUserExist(LoginDtoInput loginDtoInput) {
 
+        TypedQuery<Login> query = em.createNamedQuery("Login.findByUsernameAndPassword", Login.class);
+        query.setParameter("username", loginDtoInput.getUsername());
+        query.setParameter("password", loginDtoInput.getPassword());
+        List<Login> login = query.getResultList();
+        
+        return login;
     }
 }

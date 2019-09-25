@@ -15,12 +15,13 @@
         </p>
         <label title="Password:" >Password</label>
         <input id=password type="password" name="password" />
-    </p>
+    
     <input type="checkbox" onclick="showPassword()">Show Password
+    </p>
     </body>
     </p>
     <input type="submit" value="Login" ><br>
-    <br>
+    
 </form>
 
     <h2>or</h2><a href="registration.jsp">SIGN UP</a><br>
