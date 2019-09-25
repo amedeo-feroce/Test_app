@@ -7,12 +7,15 @@ package com.acn.nemo.service;
 
 import com.acn.nemo.dto.LoginDtoInput;
 
+
 /**
  *
  * @author l
  */
 public interface LoginService {
 
-    public boolean checkLogin(LoginDtoInput loginDtoInput);
+    public Boolean checkLogin(LoginDtoInput loginDtoInput);
+    
+    public Boolean insertLogin(LoginDtoInput loginDtoInput);
 
 }

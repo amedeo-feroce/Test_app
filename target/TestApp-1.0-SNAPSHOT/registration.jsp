@@ -12,12 +12,42 @@
         <title>Registration Page</title>
     </head>
     <body>
-        <form action="" method="">  
-            Username: <input type="text" name="username" value="Name" onclick="this.value = ''"/><br/>  
-            Email: <input type="text" name="email"  value="Email" onclick="this.value = ''"/><br/>  
-            Password: <input type="password" name="password"  value="Password" onclick="this.value = ''"/><br/>  
-            <input type="button" value="register"/><br>
-            <a href="javascript:history.back()">Go back</a>
-        </form>  
+        <form action="RegisterController" method="post" onsubmit='check()'> 
+            <center>
+                <h1>Registration Page</h1>
+            </center>
+            Username: <input id='username' type="text" name="username" value="username" onclick="this.value = ''"/><br/>    
+            Password: <input id='password' type="password" name="password"  value="Password" onclick="this.value = ''"/><br/>  
+            Confirm Password: <input id='repassword' type="password" name="repassword"  value="RePassword" onclick="this.value = ''"/><br/>
+            
+
+            <p id='errore'></p>
     </body>
+    <br><input type="submit" value="Register"/><br>
+        </form> 
+    <h3>or</h3><a href="javascript:history.back()">Go back</a>
+
+<script>
+    function check() {
+        var usernme = document.getElementById('username').value;
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        var repassword = document.getElementById('repassword').value;
+
+        var errore = true;
+
+        
+        //primo controllo
+        if (repassword != password) {
+            errore = true;
+        }
+        
+        if (errore) {
+            document.getElementById('errore').innerHTML = "errore"
+            return errore;
+        } else {
+            return errore;
+        }
+    }
+</script>
 </html>

@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Login.findByUsername", query = "SELECT l FROM Login l WHERE l.username = :username")
     , @NamedQuery(name = "Login.findByPassword", query = "SELECT l FROM Login l WHERE l.password = :password")
     , @NamedQuery(name = "Login.findByUsernameAndPassword", query = "SELECT l FROM Login l WHERE l.username = :username and l.password = :password")})
+    //, @NamedQuery(name = "Login.insertUsernameAndPassword", query = "INSERT INTO Login l(l.username,l.password) VALUES (:username,:password)")})
 
 public class Login implements Serializable {
 
@@ -63,6 +64,10 @@ public class Login implements Serializable {
         this.id = id;
         this.username = username;
         this.password = password;
+    }
+
+    public Login(String username, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public BigDecimal getId() {

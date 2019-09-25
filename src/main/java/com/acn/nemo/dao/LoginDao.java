@@ -16,6 +16,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import org.apache.log4j.Logger;
 
@@ -34,12 +35,13 @@ public class LoginDao {
     private EntityManager em = emf.createEntityManager();
     EntityTransaction transaction = em.getTransaction();
     boolean trovato = false;
+    boolean registrato = false;
 
     public LoginDao() {
         this.loginDtoOutput = new LoginDtoOutput();
     }
 
-    public boolean checkLogin(LoginDtoInput loginDtoInput) {
+    public LoginDtoOutput checkLogin(LoginDtoInput loginDtoInput) {
 
         transaction.begin();
 
@@ -47,16 +49,53 @@ public class LoginDao {
         query.setParameter("username", loginDtoInput.getUsername());
         query.setParameter("password", loginDtoInput.getPassword());
         List<Login> login = query.getResultList();
-        
+
         em.close();
 
-        for (Login login1 : login) {
+        for (Login log : login) {
             if (!login.isEmpty()) {
-                trovato = true;
+                trovato=true;
+                loginDtoOutput.setTrovato(trovato);
+                loginDtoOutput.setUsername(loginDtoInput.getUsername());
+                loginDtoOutput.setPassword(loginDtoInput.getPassword());
                 logger.info("username : " + loginDtoInput.getUsername() + "password :" + loginDtoInput.getPassword());
             }
         }
-        return trovato;
+        return loginDtoOutput;
     }
 
+    public LoginDtoOutput insertLogin(LoginDtoInput loginDtoInput) {
+        transaction.begin();
+
+        TypedQuery<Login> query1 = em.createNamedQuery("Login.findByUsernameAndPassword", Login.class);
+        query1.setParameter("username", loginDtoInput.getUsername());
+        query1.setParameter("password", loginDtoInput.getPassword());
+        List<Login> login1 = query1.getResultList();
+
+        if (login1.isEmpty()) {
+            
+        
+            Query query2 = em.createNativeQuery("INSERT INTO Login l(l.username,l.password) VALUES (:username,:password)");
+            query2.setParameter("username", loginDtoInput.getUsername());
+            query2.setParameter("password", loginDtoInput.getPassword());
+            query2.executeUpdate();
+            em.getTransaction().commit();
+            em.close();
+            registrato = true;
+            loginDtoOutput.setRegistrato(registrato);
+            loginDtoOutput.setUsername(loginDtoInput.getUsername());
+            loginDtoOutput.setPassword(loginDtoInput.getPassword());
+            logger.info("username : " + loginDtoOutput.getUsername() + "password :" + loginDtoOutput.getPassword());
+           
+        }else{
+            trovato=true;
+            loginDtoOutput.setTrovato(trovato);
+        }
+        return loginDtoOutput ;
+        
+    }
+
+    
 }
+
+

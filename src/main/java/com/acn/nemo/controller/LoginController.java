@@ -24,7 +24,6 @@ public class LoginController extends HttpServlet {
     private LoginDtoInput loginDtoInput;
     private LoginService loginService;
 
-    //private DBManager dbm;
     private static final Logger logger = Logger.getLogger(LoginController.class);
 
     /**
@@ -53,20 +52,19 @@ public class LoginController extends HttpServlet {
                 loginDtoInput.setUsername(request.getParameter("username"));
                 loginDtoInput.setPassword(request.getParameter("password"));
 
-                if (loginService.checkLogin(loginDtoInput)){
+                if (loginService.checkLogin(loginDtoInput)) {
                     session.setAttribute("user", loginDtoInput);
                     this.getServletContext().getRequestDispatcher("/userMenu.jsp").forward(request, response);
+                } else {
+
+                    this.getServletContext().getRequestDispatcher("/errorPage.jsp").forward(request, response);
                 }
-            } else {
-
-                this.getServletContext().getRequestDispatcher("/errorPage.jsp").forward(request, response);
-
             }
-            /*else {
+            else {
                 System.out.println("Sorry username or password error");
                 logger.info("null value!");
                 response.sendRedirect("login.jsp");
-            }*/
+            }
 
         } catch (Exception ex) {
             ex.printStackTrace();

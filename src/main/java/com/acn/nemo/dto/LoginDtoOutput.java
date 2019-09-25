@@ -17,13 +17,21 @@ public class LoginDtoOutput {
     private String username;
     private String password;
     private boolean trovato;
-    
+    private boolean registrato;
 
+    
     public LoginDtoOutput() {
     }
 
     public LoginDtoOutput(EntityManager em) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public boolean isRegistrato() {
+        return registrato;
+    }
+
+    public void setRegistrato(boolean registrato) {
+        this.registrato = registrato;
     }
 
     public boolean isTrovato() {
@@ -53,7 +61,11 @@ public class LoginDtoOutput {
 
     @Override
     public int hashCode() {
-        int hash = 5;
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.username);
+        hash = 37 * hash + Objects.hashCode(this.password);
+        hash = 37 * hash + (this.trovato ? 1 : 0);
+        hash = 37 * hash + (this.registrato ? 1 : 0);
         return hash;
     }
 
@@ -72,6 +84,9 @@ public class LoginDtoOutput {
         if (this.trovato != other.trovato) {
             return false;
         }
+        if (this.registrato != other.registrato) {
+            return false;
+        }
         if (!Objects.equals(this.username, other.username)) {
             return false;
         }
@@ -83,8 +98,10 @@ public class LoginDtoOutput {
 
     @Override
     public String toString() {
-        return "LoginDtoOutput{" + "username=" + username + ", password=" + password + ", trovato=" + trovato + '}';
+        return "LoginDtoOutput{" + "username=" + username + ", password=" + password + ", trovato=" + trovato + ", registrato=" + registrato + '}';
     }
+
+    
 
     
     

@@ -21,9 +21,10 @@
     </p>
     <input type="submit" value="Login" ><br>
     <br>
-    <form action="RegisterController" method="post">
-    <a href="registration.jsp">SIGN UP</a><br>
 </form>
+
+    <h2>or</h2><a href="registration.jsp">SIGN UP</a><br>
+
 <script type="text/javascript">
 
     function verifica() {
