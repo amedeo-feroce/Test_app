@@ -54,7 +54,7 @@ public class LoginDao {
 
         for (Login log : login) {
             if (!login.isEmpty()) {
-                trovato=true;
+                trovato = true;
                 loginDtoOutput.setTrovato(trovato);
                 loginDtoOutput.setUsername(loginDtoInput.getUsername());
                 loginDtoOutput.setPassword(loginDtoInput.getPassword());
@@ -73,11 +73,10 @@ public class LoginDao {
         List<Login> login1 = query1.getResultList();
 
         if (login1.isEmpty()) {
-            
-        
-            Query query2 = em.createNativeQuery("INSERT INTO Login l(l.username,l.password) VALUES (:username,:password)");
-            query2.setParameter("username", loginDtoInput.getUsername());
-            query2.setParameter("password", loginDtoInput.getPassword());
+
+            Query query2 = em.createNativeQuery("INSERT INTO LOGIN l(l.USERNAME,l.PASSWORD) VALUES (?, ?)");
+            query2.setParameter(1, loginDtoInput.getUsername());
+            query2.setParameter(2, loginDtoInput.getPassword());
             query2.executeUpdate();
             em.getTransaction().commit();
             em.close();
@@ -86,16 +85,16 @@ public class LoginDao {
             loginDtoOutput.setUsername(loginDtoInput.getUsername());
             loginDtoOutput.setPassword(loginDtoInput.getPassword());
             logger.info("username : " + loginDtoOutput.getUsername() + "password :" + loginDtoOutput.getPassword());
-           
-        }else{
-            trovato=true;
+
+        } else {
+            trovato = true;
             loginDtoOutput.setTrovato(trovato);
         }
-        return loginDtoOutput ;
-        
+        return loginDtoOutput;
+
     }
 
-    
+    private void findUserExist(LoginDtoInput loginDtoInput) {
+
+    }
 }
-
-

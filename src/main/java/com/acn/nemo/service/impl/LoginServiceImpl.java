@@ -9,24 +9,29 @@ import com.acn.nemo.dao.LoginDao;
 import com.acn.nemo.dto.LoginDtoInput;
 import com.acn.nemo.dto.LoginDtoOutput;
 import com.acn.nemo.service.LoginService;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  *
  * @author l
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class LoginServiceImpl implements LoginService {
 
     private LoginDtoOutput loginDtoOutput;
-    private LoginDao loginDao;
+    private LoginDao loginDao =new LoginDao();
     private boolean result = false;
 
-    public LoginServiceImpl(LoginDao loginDao) {
-        loginDao = new LoginDao();
-    }
-
-    public LoginServiceImpl() {
-
-    }
+  
 
     /**
      *
@@ -36,9 +41,7 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public Boolean checkLogin(LoginDtoInput loginDtoInput) {
 
-        System.out.println("loginDtoIntput" + loginDtoInput + "loginDao"+ loginDao+ "LoginDtoOutput"+ loginDtoOutput);
         loginDtoOutput = loginDao.checkLogin(loginDtoInput);
-        
         
         if (loginDtoOutput.isTrovato() && !loginDtoOutput.isRegistrato()) {
             result = true;

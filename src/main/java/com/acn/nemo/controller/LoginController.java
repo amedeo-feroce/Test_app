@@ -47,7 +47,7 @@ public class LoginController extends HttpServlet {
 
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            System.out.println(" password: " + password + " username: " + username);
+           logger.info(" password: " + password + " username: " + username);
             if ((!"".equals(username)) && (!"".equals(password))) {
                 loginDtoInput.setUsername(request.getParameter("username"));
                 loginDtoInput.setPassword(request.getParameter("password"));

@@ -12,41 +12,44 @@
         <title>Registration Page</title>
     </head>
     <body>
-        <form action="RegisterController" method="post" onsubmit='check()'> 
+        <form action="RegisterController" name="registration" method="post" onsubmit="return check(this)"> 
             <center>
                 <h1>Registration Page</h1>
             </center>
             Username: <input id='username' type="text" name="username" value="username" onclick="this.value = ''"/><br/>    
             Password: <input id='password' type="password" name="password"  value="Password" onclick="this.value = ''"/><br/>  
             Confirm Password: <input id='repassword' type="password" name="repassword"  value="RePassword" onclick="this.value = ''"/><br/>
-            
+
 
             <p id='errore'></p>
     </body>
     <br><input type="submit" value="Register"/><br>
-        </form> 
-    <h3>or</h3><a href="javascript:history.back()">Go back</a>
+</form> 
+<h3>or</h3><a href="javascript:history.back()">Go back</a>
 
-<script>
+<script type="text/javascript">
     function check() {
-        var usernme = document.getElementById('username').value;
-        var email = document.getElementById('email').value;
-        var password = document.getElementById('password').value;
-        var repassword = document.getElementById('repassword').value;
-
-        var errore = true;
-
+        var errore = false;
         
-        //primo controllo
-        if (repassword != password) {
+         if (document.registration.username.value == "") {
             errore = true;
+            alert("The Username field is required.");
         }
-        
+        if (document.registration.password.value == "") {
+            errore = true;
+            alert("The password field is required.");
+        }
+        // Verifico che le due password siano uguali, in caso contrario avverto
+        // dell'errore con un Alert
+        if (document.registration.password.value != document.registration.repassword.value) {
+            errore=true;
+            alert("Your password and confirmation password do not match");
+            
+        }
         if (errore) {
-            document.getElementById('errore').innerHTML = "errore"
-            return errore;
+            return false;
         } else {
-            return errore;
+            return true;
         }
     }
 </script>

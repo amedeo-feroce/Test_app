@@ -51,7 +51,7 @@ public class RegisterController extends HttpServlet {
             if (loginService.insertLogin(loginDtoInput)) {
                 session.setAttribute("register", loginDtoInput);
 
-                this.getServletContext().getRequestDispatcher("/userMenu.jsp").forward(request, response);
+                this.getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
             } else {
                 logger.error("user already exists");
                 this.getServletContext().getRequestDispatcher("/registration.jsp").forward(request, response);
