@@ -5,8 +5,7 @@
  */
 package com.acn.nemo.dto;
 
-import java.util.Objects;
-import javax.persistence.EntityManager;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
