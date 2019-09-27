@@ -58,7 +58,7 @@ public class RegisterController extends HttpServlet {
             }
 
         }
-
+        out.close();
     }
 
     @Override

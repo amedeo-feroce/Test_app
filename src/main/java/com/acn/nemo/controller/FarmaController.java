@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "FarmaController", urlPatterns = {"/FarmaController"})
 public class FarmaController extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -34,8 +36,15 @@ public class FarmaController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String op=request.getParameter("op");
-            
+        String op = request.getParameter("op");
+
+        if (op.equals("update")) {
+            HttpSession sessIon = request.getSession(true);
+            this.getServletContext().getRequestDispatcher("/update.jsp").forward(request, response);
+        } else if (op.equals("delete")) {
+            HttpSession session = request.getSession(true);
+        }
+        out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

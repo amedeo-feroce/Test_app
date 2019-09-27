@@ -3,6 +3,7 @@
   <persistence-unit name="C3BO_MW" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.acn.nemo.model.Login</class>
+    <class>com.acn.nemo.model.Farma_promo_def</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@//10.0.0.7:1521/sic30dev"/>

@@ -19,7 +19,7 @@
 
     <h3>Welcome <%=loginDto.getUsername()%></h3>
     <h3>THIS IS THE FARMA_PROMO_DEF TABLE:</h3>
-    <form  method="post" >
+    <form action="FarmaController" method="post" >
 
         <table border="2">
             <tr>
@@ -57,6 +57,9 @@
                 <td><%=rs.getInt("TIPO_PROMO_VS")%></td>
                 <td><%=rs.getString("DESC_TIPO")%></td>
                 <td><%=rs.getDate("DT_MOD")%></td>
+                <td><input type="radio" onclick="window.location = 'FarmaController?op=update';">UPDATE</td>
+                <td><input type="radio" onclick="window.location = 'FarmaController?op=delete';">DELETE</td>
+
             </tr>
             <%--<input type="hidden" name="id" value=<%=rs.getId() %>>--%>
             <%}%>
@@ -68,8 +71,10 @@
         } catch (Exception e) {
             out.print(e.getMessage());%><br><%
                 }%>
+
+        <br>
+
+        </body>
     </form>
-    <br>
     <br><br><br><br><br><a href="LogoutController">Logout</a>
-</body>
 </html>
