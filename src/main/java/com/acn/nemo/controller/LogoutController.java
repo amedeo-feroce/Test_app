@@ -7,7 +7,6 @@ package com.acn.nemo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +22,7 @@ import org.apache.log4j.Logger;
 @WebServlet(name = "LogoutController", urlPatterns = {"/LogoutController"})
 public class LogoutController extends HttpServlet {
 
-    private static final Logger logger = Logger.getLogger(LoginController.class);
+    private static final Logger logger = Logger.getLogger(LogoutController.class);
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

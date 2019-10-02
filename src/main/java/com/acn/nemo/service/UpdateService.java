@@ -13,6 +13,10 @@ import com.acn.nemo.dto.UpdateDtoInput;
  * @author amedeo.feroce
  */
 public interface UpdateService {
+    
+     public boolean readCod ();
+    public boolean readCod (int id);
     public Boolean updateData(UpdateDtoInput updateDtoInput);
+    public Boolean deleteData (UpdateDtoInput updateDtoInput);
     
 }

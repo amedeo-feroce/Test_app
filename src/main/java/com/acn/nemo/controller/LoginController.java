@@ -18,6 +18,7 @@ import com.acn.nemo.service.LoginService;
 import com.acn.nemo.service.impl.LoginServiceImpl;
 import javax.servlet.http.HttpSession;
 
+
 @WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
 public class LoginController extends HttpServlet {
 
@@ -47,7 +48,9 @@ public class LoginController extends HttpServlet {
 
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-           logger.info(" password: " + password + " username: " + username);
+
+            
+            logger.info(" this is a information log message ");
             if ((!"".equals(username)) && (!"".equals(password))) {
                 loginDtoInput.setUsername(request.getParameter("username"));
                 loginDtoInput.setPassword(request.getParameter("password"));
@@ -59,8 +62,7 @@ public class LoginController extends HttpServlet {
 
                     this.getServletContext().getRequestDispatcher("/errorPage.jsp").forward(request, response);
                 }
-            }
-            else {
+            } else {
                 System.out.println("Sorry username or password error");
                 logger.info("null value!");
                 response.sendRedirect("login.jsp");

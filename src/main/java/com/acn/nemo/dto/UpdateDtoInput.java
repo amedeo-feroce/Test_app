@@ -6,7 +6,6 @@
 package com.acn.nemo.dto;
 
 
-import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,22 +20,15 @@ import lombok.NoArgsConstructor;
  */
 public class UpdateDtoInput {
     
-    private int cod_promo;
-    private int pgr_promo;
-    private int pgr_riga;
-    private Date data_inizio_promo;
-    private Date data_fine_promo;
-    private String seg_cli;
-    private int valore_tp;
+    private short cod_promo;
+    private short pgr_promo;
+    private short pgr_riga;
     private int sconto_p;
-    private int nro_volte;
-    private String tipo;
     private String tipo_promo;
     private String descrizione;
-    private String iniziativa;
-    private int tipo_promo_vs;
     private String desc_tipo;
-    private Date dt_mod;
+    private int id;
+    
    
     
 }

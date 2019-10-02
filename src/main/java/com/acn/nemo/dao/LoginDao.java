@@ -27,7 +27,7 @@ import org.apache.log4j.Logger;
  */
 public class LoginDao {
 
-    private static final Logger logger = Logger.getLogger(LoginController.class);
+    private static final Logger logger = Logger.getLogger(LoginDao.class);
 
     private LoginDtoOutput loginDtoOutput;
     @PersistenceUnit
@@ -48,7 +48,7 @@ public class LoginDao {
         
         List<Login> login = findUserExist(loginDtoInput);
         
-        em.close();
+       em.close();
 
         for (Login log : login) {
             if (!login.isEmpty()) {

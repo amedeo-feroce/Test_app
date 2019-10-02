@@ -20,7 +20,7 @@ import org.apache.log4j.Logger;
 @WebServlet(name = "RegisterController", urlPatterns = {"/RegisterController"})
 public class RegisterController extends HttpServlet {
 
-    private static final Logger logger = Logger.getLogger(LoginController.class);
+    private static final Logger logger = Logger.getLogger(RegisterController.class);
 
     private LoginDtoInput loginDtoInput;
     private LoginService loginService;

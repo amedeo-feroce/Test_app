@@ -6,15 +6,15 @@
 package com.acn.nemo.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -32,6 +32,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "FARMA_PROMO_DEF", catalog = "", schema = "C3BO_MW")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Farma_promo_def.findCod", query = "SELECT f FROM Farma_promo_def f WHERE f.pgr_promo= :pgr_promo")})
 public class Farma_promo_def implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -53,18 +55,6 @@ public class Farma_promo_def implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "PGR_RIGA")
     private int pgr_riga;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "DATA_INIZIO_PROMO")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date data_inizio_promo;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "DATA_FINE_PROMO")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date data_fine_promo;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -115,12 +105,7 @@ public class Farma_promo_def implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "DESC_TIPO")
     private String desc_tipo;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "DT_MOD")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dt_mod;
+    
 
    
 }
