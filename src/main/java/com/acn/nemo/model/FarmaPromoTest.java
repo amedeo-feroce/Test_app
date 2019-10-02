@@ -6,7 +6,6 @@
 package com.acn.nemo.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -59,7 +58,7 @@ public class FarmaPromoTest implements Serializable {
     private short pgrRiga;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "SCONTO_P")
-    private BigDecimal scontoP;
+    private int scontoP;
     @Size(max = 3)
     @Column(name = "TIPO_PROMO")
     private String tipoPromo;
@@ -73,7 +72,7 @@ public class FarmaPromoTest implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID")
-    private BigDecimal id;
+    private int id;
 
    
 }

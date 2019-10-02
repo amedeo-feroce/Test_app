@@ -74,19 +74,18 @@ public class UpdateDao {
     
     public UpdateDtoOutput updateData(UpdateDtoInput updateDtoInput) {
         transaction.begin();
-        Query query = em.createNativeQuery("UPDATE FARMA_PROMO_TEST f SET f.cod_promo = ?,f.pgr_promo = ?, f.pgr_riga = ?, f.sconto_p = ?, f.tipo_promo = ?, f.descrizione = ?, f.desc_tipo = ?,f.id=? WHERE f.id = ? ");
+        Query query = em.createQuery("UPDATE FarmaPromoTest f SET f.codPromo = :codPromo, f.pgrPromo = :pgrPromo, f.pgrRiga = :pgrRiga, f.scontoP = :scontoP, f.tipoPromo = :tipoPromo, f.descrizione = :descrizione, f.descTipo = :descTipo WHERE f.id = :id");
         
-        query.setParameter("cod_promo", updateDtoInput.getCod_promo());
-        query.setParameter("pgr_promo", updateDtoInput.getPgr_promo());
-        query.setParameter("pgr_riga", updateDtoInput.getPgr_riga());
-        query.setParameter("sconto_p", updateDtoInput.getSconto_p());
-        query.setParameter("tipo_promo", updateDtoInput.getTipo_promo());
-        query.setParameter("descrizione", updateDtoInput.getDescrizione());
-        query.setParameter("desc_tipo", updateDtoInput.getDesc_tipo());
         query.setParameter("id", updateDtoInput.getId());
+        query.setParameter("codPromo", updateDtoInput.getCod_promo());
+        query.setParameter("pgrPromo", updateDtoInput.getPgr_promo());
+        query.setParameter("pgrRiga", updateDtoInput.getPgr_riga());
+        query.setParameter("scontoP", updateDtoInput.getSconto_p());
+        query.setParameter("tipoPromo", updateDtoInput.getTipo_promo());
+        query.setParameter("descrizione", updateDtoInput.getDescrizione());
+        query.setParameter("descTipo", updateDtoInput.getDesc_tipo());
         
         query.executeUpdate();
-        
         em.getTransaction().commit();
         em.close();
         emf.close();
@@ -101,6 +100,7 @@ public class UpdateDao {
         
         Query query = em.createQuery("DELETE FROM FarmaPromoTest f WHERE f.id = :id");
         query.setParameter("id", updateDtoInput.getId());
+        
         query.executeUpdate();
         em.getTransaction().commit();
         em.close();

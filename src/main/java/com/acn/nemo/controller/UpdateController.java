@@ -76,7 +76,7 @@ public class UpdateController extends HttpServlet {
                     this.getServletContext().getRequestDispatcher("/updateSuccessfully.jsp").forward(request, response);
                 }
             } else {
-                logger.error("Update failed!");
+                logger.error("Update failed! Null value");
             }
 
         }
